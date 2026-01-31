@@ -5,6 +5,8 @@
  */
 package main;
 
+import config.config;
+import java.awt.Color;
 /**
  *
  * @author Anton
@@ -18,6 +20,8 @@ public class loginForm extends javax.swing.JFrame {
         initComponents();
     }
 
+    Color hover = new Color(143,177,138);
+    Color Buttons = new Color(167,196,160);
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,21 +31,166 @@ public class loginForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        confirmButton = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        backbutton = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        fullname2 = new javax.swing.JTextField();
+        fullname3 = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(255, 246, 240));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel4.setBackground(new java.awt.Color(247, 242, 236));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel2.setBackground(new java.awt.Color(255, 248, 242));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        confirmButton.setBackground(new java.awt.Color(167, 196, 160));
+        confirmButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                confirmButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                confirmButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                confirmButtonMouseExited(evt);
+            }
+        });
+        confirmButton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel6.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("Confirm");
+        confirmButton.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 9, 110, 20));
+
+        jPanel2.add(confirmButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 180, 110, 40));
+
+        backbutton.setBackground(new java.awt.Color(167, 196, 160));
+        backbutton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        backbutton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                backbuttonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                backbuttonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                backbuttonMouseExited(evt);
+            }
+        });
+        backbutton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel7.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("Back");
+        backbutton.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 9, 110, 20));
+
+        jPanel2.add(backbutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, 110, 40));
+
+        fullname2.setBackground(new java.awt.Color(255, 246, 240));
+        fullname2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        fullname2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Email", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12))); // NOI18N
+        fullname2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fullname2ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(fullname2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, 260, 50));
+
+        fullname3.setBackground(new java.awt.Color(255, 246, 240));
+        fullname3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        fullname3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Password", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12))); // NOI18N
+        fullname3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fullname3ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(fullname3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 260, 50));
+
+        jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Don't have an account? Click here to Sign Up");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 390, 20));
+
+        jPanel4.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 390, 290));
+
+        jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Welcome Back Crafter! ");
+        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 450, 50));
+
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 450, 420));
+
+        jPanel3.setBackground(new java.awt.Color(232, 214, 201));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/bigPic.png"))); // NOI18N
+        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 310, 420));
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 311, 420));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void confirmButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_confirmButtonMouseClicked
+        config con = new config();
+
+        
+    }//GEN-LAST:event_confirmButtonMouseClicked
+
+    private void confirmButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_confirmButtonMouseEntered
+        confirmButton.setBackground(hover);
+    }//GEN-LAST:event_confirmButtonMouseEntered
+
+    private void confirmButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_confirmButtonMouseExited
+        confirmButton.setBackground(Buttons);
+    }//GEN-LAST:event_confirmButtonMouseExited
+
+    private void backbuttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backbuttonMouseClicked
+        landingForm lf = new landingForm();
+        lf.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_backbuttonMouseClicked
+
+    private void backbuttonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backbuttonMouseEntered
+        backbutton.setBackground(hover);
+    }//GEN-LAST:event_backbuttonMouseEntered
+
+    private void backbuttonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backbuttonMouseExited
+        backbutton.setBackground(Buttons);
+    }//GEN-LAST:event_backbuttonMouseExited
+
+    private void fullname2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fullname2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fullname2ActionPerformed
+
+    private void fullname3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fullname3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fullname3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +228,18 @@ public class loginForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel backbutton;
+    private javax.swing.JPanel confirmButton;
+    private javax.swing.JTextField fullname2;
+    private javax.swing.JTextField fullname3;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     // End of variables declaration//GEN-END:variables
 }
