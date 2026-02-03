@@ -4,6 +4,7 @@ package config;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 
@@ -55,4 +56,29 @@ public void addRecord(String sql, Object... values) {
         System.out.println("Error adding record: " + e.getMessage());
     }
 }
+
+public boolean isEmailExist(String email) {
+    boolean exists = false;
+
+    String sql = "SELECT 1 FROM tbl_Accounts WHERE email = ?";
+
+    try (Connection conn = connectDB();
+         PreparedStatement pst = conn.prepareStatement(sql)) {
+
+        pst.setString(1, email);
+        ResultSet rs = pst.executeQuery();
+
+        if (rs.next()) {
+            exists = true;
+        }
+
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+
+    return exists;
+}
+
+
+
 }

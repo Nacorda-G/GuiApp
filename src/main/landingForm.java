@@ -32,8 +32,8 @@ public class landingForm extends javax.swing.JFrame {
     private void initComponents() {
 
         jTextField1 = new javax.swing.JTextField();
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        main = new javax.swing.JPanel();
+        Header = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         login = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -41,18 +41,18 @@ public class landingForm extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
+        desc1 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jPanel6 = new javax.swing.JPanel();
+        desc2 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jPanel7 = new javax.swing.JPanel();
+        desc3 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
@@ -68,17 +68,17 @@ public class landingForm extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(247, 242, 236));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        main.setBackground(new java.awt.Color(247, 242, 236));
+        main.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(232, 214, 201));
-        jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(232, 214, 201), new java.awt.Color(232, 214, 201), null, null));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        Header.setBackground(new java.awt.Color(232, 214, 201));
+        Header.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(232, 214, 201), new java.awt.Color(232, 214, 201), null, null));
+        Header.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/smallBall.png"))); // NOI18N
         jLabel2.setText("Crochet Creations");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 60));
+        Header.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 60));
 
         login.setBackground(new java.awt.Color(167, 196, 160));
         login.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -99,10 +99,13 @@ public class landingForm extends javax.swing.JFrame {
         jLabel3.setText("Login");
         login.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 90, 20));
 
-        jPanel2.add(login, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 10, 90, 40));
+        Header.add(login, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 10, 90, 40));
 
         SignUp.setBackground(new java.awt.Color(167, 196, 160));
         SignUp.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                SignUpMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 SignUpMouseEntered(evt);
             }
@@ -117,113 +120,113 @@ public class landingForm extends javax.swing.JFrame {
         jLabel4.setText("Sign Up");
         SignUp.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 90, 20));
 
-        jPanel2.add(SignUp, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 10, 90, 40));
+        Header.add(SignUp, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 10, 90, 40));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 60));
+        main.add(Header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 60));
 
         jLabel1.setFont(new java.awt.Font("Century Gothic", 3, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Welcome to Crochet Creations");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 760, 60));
+        main.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 760, 60));
 
         jLabel5.setFont(new java.awt.Font("Century Gothic", 2, 14)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Share patterns, showcase your creations, and connect with fellow crochet lovers");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 760, 40));
+        main.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 760, 40));
 
-        jPanel5.setBackground(new java.awt.Color(255, 248, 242));
-        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        desc1.setBackground(new java.awt.Color(255, 248, 242));
+        desc1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel6.setFont(new java.awt.Font("Century Gothic", 3, 14)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Share Creations");
-        jPanel5.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 200, 20));
+        desc1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 200, 20));
 
         jLabel7.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("patterns with pride");
-        jPanel5.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 200, 20));
+        desc1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 200, 20));
 
         jLabel8.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Post your crochet projects and");
-        jPanel5.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 200, 20));
+        desc1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 200, 20));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(232, 214, 201));
         jLabel10.setText("---------------------------------------");
-        jPanel5.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 160, 20));
+        desc1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 160, 20));
 
-        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 200, 120));
+        main.add(desc1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 200, 120));
 
         jLabel9.setForeground(new java.awt.Color(232, 214, 201));
         jLabel9.setText("--------------------------------------------------------------------------------------------------------------------------");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, 490, -1));
+        main.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, 490, -1));
 
-        jPanel6.setBackground(new java.awt.Color(255, 248, 242));
-        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        desc2.setBackground(new java.awt.Color(255, 248, 242));
+        desc2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel11.setFont(new java.awt.Font("Century Gothic", 3, 14)); // NOI18N
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("Connect with others");
-        jPanel6.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 200, 20));
+        desc2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 200, 20));
 
         jLabel12.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setText("with fellow crafters");
-        jPanel6.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 200, 20));
+        desc2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 200, 20));
 
         jLabel13.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel13.setText("Like, comment, and chat");
-        jPanel6.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 200, 20));
+        desc2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 200, 20));
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(232, 214, 201));
         jLabel14.setText("---------------------------------------");
-        jPanel6.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 160, 20));
+        desc2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 160, 20));
 
-        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 180, 200, 120));
+        main.add(desc2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 180, 200, 120));
 
-        jPanel7.setBackground(new java.awt.Color(255, 248, 242));
-        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        desc3.setBackground(new java.awt.Color(255, 248, 242));
+        desc3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel15.setFont(new java.awt.Font("Century Gothic", 3, 14)); // NOI18N
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel15.setText("Discover Patterns");
-        jPanel7.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 200, 20));
+        desc3.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 200, 20));
 
         jLabel16.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel16.setText(" shared by the community.");
-        jPanel7.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 200, 20));
+        desc3.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 200, 20));
 
         jLabel17.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel17.setText("Explore trending and ");
-        jPanel7.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 200, 20));
+        desc3.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 200, 20));
 
         jLabel18.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(232, 214, 201));
         jLabel18.setText("---------------------------------------");
-        jPanel7.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 160, 20));
+        desc3.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 160, 20));
 
         jLabel22.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel22.setText("classic crochet patterns");
-        jPanel7.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 200, 20));
+        desc3.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 200, 20));
 
-        jPanel1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 180, 200, 120));
+        main.add(desc3, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 180, 200, 120));
 
         jLabel19.setForeground(new java.awt.Color(232, 214, 201));
         jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel19.setText("-------------------------------------------------------------------------------------------------------------------------------------------------------");
-        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 760, -1));
+        main.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 760, -1));
 
         jLabel20.setFont(new java.awt.Font("Century Gothic", 3, 14)); // NOI18N
         jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel20.setText("Ready to stitch your story?");
-        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 760, 30));
+        main.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 760, 30));
 
         Getstartedbtn.setBackground(new java.awt.Color(217, 164, 65));
         Getstartedbtn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -244,9 +247,9 @@ public class landingForm extends javax.swing.JFrame {
         jLabel21.setText("Get Started");
         Getstartedbtn.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 160, 20));
 
-        jPanel1.add(Getstartedbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 360, 160, 40));
+        main.add(Getstartedbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 360, 160, 40));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 420));
+        getContentPane().add(main, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 420));
 
         pack();
         setLocationRelativeTo(null);
@@ -288,6 +291,12 @@ public class landingForm extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_loginMouseClicked
 
+    private void SignUpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SignUpMouseClicked
+        registerForm rf = new registerForm();
+        rf.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_SignUpMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -325,7 +334,11 @@ public class landingForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Getstartedbtn;
+    private javax.swing.JPanel Header;
     private javax.swing.JPanel SignUp;
+    private javax.swing.JPanel desc1;
+    private javax.swing.JPanel desc2;
+    private javax.swing.JPanel desc3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -348,12 +361,8 @@ public class landingForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JPanel login;
+    private javax.swing.JPanel main;
     // End of variables declaration//GEN-END:variables
 }

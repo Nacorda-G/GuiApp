@@ -5,82 +5,58 @@
  */
 package main;
 
-import static config.config.connectDB;
 import java.awt.Color;
-import javax.swing.table.DefaultTableModel;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import config.config;
+import internalPages.*;
 
 /**
  *
  * @author Anton
  */
-public class Dashboard extends javax.swing.JFrame {
+public class userDashboard extends javax.swing.JFrame {
 
     private int userId;
     private String fullName;
     private String email;
     
-    public Dashboard() {
+    public userDashboard() {
         initComponents();
-        tableModel = (DefaultTableModel) jTable1.getModel();
-        
     }
 
-    public Dashboard(int userId, String fullName, String email) {
-        initComponents();
-        tableModel = (DefaultTableModel) jTable1.getModel();
+    public userDashboard(int userId, String fullName, String email) {
+    initComponents();
 
-        this.userId = userId;
-        this.fullName = fullName;
-        this.email = email;
+    this.userId = userId;
+    this.fullName = fullName;
+    this.email = email;
 
-        // Optional: display admin name somewhere
-        jLabel5.setText("Welcome Admin, " + fullName);
+    // Example: show user info in header
+    jLabel5.setText("Welcome, " + fullName);
 
-        loadUsers(); // load user list
-    }
-    
-    public void clearTable() {
-    tableModel.setRowCount(0);
+    loadUserProfile();
 }
 
-    public void loadUsers() {
-    clearTable();
+    public void loadUserProfile() {
 
-    String sql = "SELECT a_id, name, email, pass, type, status FROM tbl_Accounts";
+    String sql = "SELECT name, email, pass, type, status FROM tbl_Accounts WHERE a_id = ?";
 
-    try (Connection con = connectDB();
-         PreparedStatement pst = con.prepareStatement(sql);
-         ResultSet rs = pst.executeQuery()) {
+    try (Connection con = config.connectDB();
+         PreparedStatement pst = con.prepareStatement(sql)) {
 
-        while (rs.next()) {
-            tableModel.addRow(new Object[]{
-                rs.getInt("a_id"),
-                rs.getString("name"),
-                rs.getString("email"),
-                rs.getString("pass"),
-                rs.getString("type"),
-                rs.getString("status")
-            });
-        }
+        pst.setInt(1, userId);
+        ResultSet rs = pst.executeQuery();
 
-    } catch (SQLException e) {
-        System.out.println("Load Users Error: " + e.getMessage());
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Failed to load profile: " + e.getMessage());
     }
 }
-
-
-    
 
     Color hover = new Color(143,177,138);
     Color Buttons = new Color(227,235,221);
-    DefaultTableModel tableModel;
-
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -94,7 +70,7 @@ public class Dashboard extends javax.swing.JFrame {
         Navbar = new javax.swing.JPanel();
         home = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        users = new javax.swing.JPanel();
+        userProfile = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         posts = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -102,8 +78,7 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         Header = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        userDesktop = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -115,6 +90,9 @@ public class Dashboard extends javax.swing.JFrame {
 
         home.setBackground(new java.awt.Color(227, 235, 221));
         home.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                homeMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 homeMouseEntered(evt);
             }
@@ -131,26 +109,26 @@ public class Dashboard extends javax.swing.JFrame {
 
         Navbar.add(home, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 210, 40));
 
-        users.setBackground(new java.awt.Color(227, 235, 221));
-        users.addMouseListener(new java.awt.event.MouseAdapter() {
+        userProfile.setBackground(new java.awt.Color(227, 235, 221));
+        userProfile.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                usersMouseClicked(evt);
+                userProfileMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                usersMouseEntered(evt);
+                userProfileMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                usersMouseExited(evt);
+                userProfileMouseExited(evt);
             }
         });
-        users.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        userProfile.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Users");
-        users.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 210, 20));
+        jLabel2.setText("My Profile");
+        userProfile.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 210, 20));
 
-        Navbar.add(users, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 210, 40));
+        Navbar.add(userProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 210, 40));
 
         posts.setBackground(new java.awt.Color(227, 235, 221));
         posts.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -189,7 +167,7 @@ public class Dashboard extends javax.swing.JFrame {
         Navbar.add(logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 210, 40));
 
         jPanel1.add(Navbar);
-        Navbar.setBounds(0, 0, 210, 420);
+        Navbar.setBounds(0, 0, 210, 480);
 
         Header.setBackground(new java.awt.Color(247, 242, 236));
         Header.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(247, 242, 236), new java.awt.Color(247, 242, 236), null, null));
@@ -197,47 +175,37 @@ public class Dashboard extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Admin Dashboard");
+        jLabel5.setText("User Dashboard");
         Header.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 550, 40));
 
         jPanel1.add(Header);
-        Header.setBounds(210, 0, 560, 60);
+        Header.setBounds(210, 0, 780, 60);
 
-        jTable1.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "a_id", "name", "email", "pass", "type", "status"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
+        userDesktop.setBackground(new java.awt.Color(247, 242, 236));
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jTable1.setRowHeight(20);
-        jScrollPane1.setViewportView(jTable1);
+        javax.swing.GroupLayout userDesktopLayout = new javax.swing.GroupLayout(userDesktop);
+        userDesktop.setLayout(userDesktopLayout);
+        userDesktopLayout.setHorizontalGroup(
+            userDesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 770, Short.MAX_VALUE)
+        );
+        userDesktopLayout.setVerticalGroup(
+            userDesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 420, Short.MAX_VALUE)
+        );
 
-        jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(210, 60, 550, 360);
+        jPanel1.add(userDesktop);
+        userDesktop.setBounds(210, 60, 770, 420);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 760, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 980, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 420, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 478, Short.MAX_VALUE)
         );
 
         pack();
@@ -252,13 +220,13 @@ public class Dashboard extends javax.swing.JFrame {
         home.setBackground(Buttons);
     }//GEN-LAST:event_homeMouseExited
 
-    private void usersMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usersMouseEntered
-        users.setBackground(hover);
-    }//GEN-LAST:event_usersMouseEntered
+    private void userProfileMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userProfileMouseEntered
+        userProfile.setBackground(hover);
+    }//GEN-LAST:event_userProfileMouseEntered
 
-    private void usersMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usersMouseExited
-        users.setBackground(Buttons);
-    }//GEN-LAST:event_usersMouseExited
+    private void userProfileMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userProfileMouseExited
+        userProfile.setBackground(Buttons);
+    }//GEN-LAST:event_userProfileMouseExited
 
     private void postsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_postsMouseEntered
         posts.setBackground(hover);
@@ -276,9 +244,15 @@ public class Dashboard extends javax.swing.JFrame {
         logout.setBackground(Buttons);
     }//GEN-LAST:event_logoutMouseExited
 
-    private void usersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usersMouseClicked
-        loadUsers();
-    }//GEN-LAST:event_usersMouseClicked
+    private void homeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeMouseClicked
+        
+        
+    }//GEN-LAST:event_homeMouseClicked
+
+    private void userProfileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userProfileMouseClicked
+        userPage up = new userPage(this.userId);
+        userDesktop.add(up).setVisible(true);
+    }//GEN-LAST:event_userProfileMouseClicked
 
     /**
      * @param args the command line arguments
@@ -297,20 +271,20 @@ public class Dashboard extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(userDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(userDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(userDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(userDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Dashboard().setVisible(true);
+                new userDashboard().setVisible(true);
             }
         });
     }
@@ -325,10 +299,9 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JPanel logout;
     private javax.swing.JPanel posts;
-    private javax.swing.JPanel users;
+    private javax.swing.JDesktopPane userDesktop;
+    private javax.swing.JPanel userProfile;
     // End of variables declaration//GEN-END:variables
 }
